@@ -1,26 +1,48 @@
-use cirious_codex_term::{Color, Cursor, Screen, Style};
-// Assuming you have traits like Stylize or Colorize in `traits.rs` to allow `"text".red().bold()`
-// use cirious_codex_term::traits::*;
+//! # Example Usage: `cirious_codex_term`
+//!
+//! This example demonstrates how to initialize the library, manipulate the cursor,
+//! clear the screen, and apply styles using the fluid, performant builder API.
+//!
+//! ## Requirements
+//! Ensure your `Cargo.toml` is configured with the necessary dependencies.
 
-fn main() {
-  // Screen clearing
-  Screen::clear();
-  Cursor::set_position(1, 1);
+use cirious_codex_term::control::{traits::StyleExt, Cursor};
+use std::io::{stdout, Write};
 
-  // Using raw styles and colors
-  println!(
-    "{} {} Hello, Codex Term! {}",
-    Style::Bold.to_str(),
-    Color::Cyan.to_fg_str(),
-    Style::Reset.to_str()
-  );
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+  // 1. Terminal Initialization
+  // Mandatory for enabling ANSI support on Windows.
+  // On Linux/macOS, this is a no-op (native support).
+  cirious_codex_term::init_term();
 
-  // Example of cursor movement
-  Cursor::down(2);
-  Cursor::right(5);
-  println!("I am here!");
+  // 2. Fluid Styling
+  // The `StyleExt` trait allows chaining styles directly onto any type that
+  // implements `Display`. This avoids unnecessary allocations and improves
+  // code readability.
+  println!("{}", "Hello, Codex Term!".cyan().bold());
 
-  Cursor::hide();
-  println!("Cursor is hidden");
-  Cursor::show();
+  // 3. Cursor Manipulation
+  // We use a handle to `stdout` to ensure escape sequences are written
+  // directly to the system buffer.
+  let mut handle = stdout();
+
+  Cursor::down(&mut handle, 2)?;
+  Cursor::right(&mut handle, 5)?;
+
+  // 4. Explicitly write and flush to ensure the text appears at the
+  // exact position before further operations.
+  write!(handle, "I am here!")?;
+  handle.flush()?;
+
+  // 5. Cursor Visibility
+  // Hiding the cursor is essential for TUI (Terminal User Interface)
+  // applications to prevent flickering and visual clutter.
+  Cursor::hide(&mut handle)?;
+  println!("\nCursor hidden for 1 second...");
+  std::thread::sleep(std::time::Duration::from_secs(1));
+
+  Cursor::show(&mut handle)?;
+  println!("Cursor restored.");
+
+  Ok(())
 }

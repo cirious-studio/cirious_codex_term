@@ -12,7 +12,7 @@
 //! implements `std::fmt::Display`.
 //!
 //! ```rust
-//! use cirious_codex_term::traits::StyleExt;
+//! use cirious_codex_term::StyleExt;
 //!
 //! // Style strings natively
 //! println!("{}", "Warning: High memory usage!".yellow().bold().blink());
@@ -22,29 +22,16 @@
 //! println!("You are {} years old.", age.green().underline());
 //! ```
 
-#![warn(missing_docs)]
+#![cfg_attr(docsrs, feature(doc_auto_cfg))]
 
-/// ANSI color definitions and representations.
-pub mod color;
+/// ANSI control structures
+pub mod control;
 
-/// Utilities for moving and manipulating the terminal cursor.
-pub mod cursor;
+/// Prompt utilities for terminal input and output.
+pub mod prompt;
 
-/// Utilities for clearing the terminal screen or lines.
-pub mod screen;
+#[cfg(windows)]
+pub use prompt::enable_ansi_support;
+pub use prompt::{init_term, RawModeGuard, TerminalSize};
 
-/// ANSI text formatting styles (e.g., bold, italic).
-pub mod style;
-
-/// Deferred formatting structures for optimal string styling.
-pub mod styled;
-
-/// Extension traits for adding styling methods to types.
-pub mod traits;
-
-pub use color::Color;
-pub use cursor::Cursor;
-pub use screen::Screen;
-pub use style::Style;
-pub use styled::StyledText;
-pub use traits::StyleExt;
+pub use control::{Color, Cursor, Screen, Style, StyleExt, StyledText};

@@ -1,4 +1,4 @@
-use crate::{color::Color, styled::StyledText};
+use super::{color::Color, styled::StyledText};
 use std::fmt::Display;
 
 /// Extension trait providing an elegant builder API for terminal styling.
@@ -9,7 +9,7 @@ use std::fmt::Display;
 /// # Examples
 ///
 /// ```rust
-/// use cirious_codex_term::traits::StyleExt;
+/// use cirious_codex_term::StyleExt;
 ///
 /// let styled_string = "Success".green().bold();
 /// assert_eq!(styled_string.to_string(), "\x1b[1m\x1b[32mSuccess\x1b[0m");
@@ -25,7 +25,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".black());
   /// ```
   fn black(self) -> StyledText<Self>;
@@ -35,7 +35,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".red());
   /// ```
   fn red(self) -> StyledText<Self>;
@@ -45,7 +45,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".green());
   /// ```
   fn green(self) -> StyledText<Self>;
@@ -55,7 +55,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".yellow());
   /// ```
   fn yellow(self) -> StyledText<Self>;
@@ -65,7 +65,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".blue());
   /// ```
   fn blue(self) -> StyledText<Self>;
@@ -75,7 +75,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".magenta());
   /// ```
   fn magenta(self) -> StyledText<Self>;
@@ -85,7 +85,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".cyan());
   /// ```
   fn cyan(self) -> StyledText<Self>;
@@ -95,7 +95,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".white());
   /// ```
   fn white(self) -> StyledText<Self>;
@@ -105,7 +105,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".rgb(255, 0, 0));
   /// ```
   fn rgb(self, r: u8, g: u8, b: u8) -> StyledText<Self>;
@@ -115,7 +115,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".bold());
   /// ```
   fn bold(self) -> StyledText<Self>;
@@ -125,7 +125,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".italic());
   /// ```
   fn italic(self) -> StyledText<Self>;
@@ -135,7 +135,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".underline());
   /// ```
   fn underline(self) -> StyledText<Self>;
@@ -145,7 +145,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".blink());
   /// ```
   fn blink(self) -> StyledText<Self>;
@@ -155,7 +155,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".strikethrough());
   /// ```
   fn strikethrough(self) -> StyledText<Self>;
@@ -165,7 +165,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".dim());
   /// ```
   fn dim(self) -> StyledText<Self>;
@@ -175,7 +175,7 @@ pub trait StyleExt: Sized {
   /// # Examples
   ///
   /// ```rust
-  /// use cirious_codex_term::traits::StyleExt;
+  /// use cirious_codex_term::StyleExt;
   /// println!("{}", "Everything is OK".reset());
   /// ```
   fn reset(self) -> StyledText<Self>;

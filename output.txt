@@ -1,0 +1,4 @@
+[1m[36mHello, Codex Term![0m
+[2B[5CI am here![?25l
+Cursor hidden for 1 second...
+[?25hCursor restored.

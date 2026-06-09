@@ -16,15 +16,6 @@
 
 Designed to be the ultimate bedrock for CLI tools within the Cirious ecosystem, prioritizing zero-cost abstractions and flawless terminal integration.
 
-## ✨ Features
-
-- Core color manipulation (16 colors, 256 colors, TrueColor RGB).
-- Text formatting traits (Bold, Italic, Blink, Dim, etc.).
-- Absolute and relative cursor positioning.
-- Screen manipulation and clearing.
-
----
-
 ## 🚀 Quick Start
  
 Add the following to your `Cargo.toml`:
@@ -70,12 +61,19 @@ fn main() {
 
 ## 🚧 Current Status & Roadmap
 
-The architecture is currently being mapped out for the upcoming `v0.2` release:
+### ✅ v0.1.0 — Completed
 
-- [ ] **Windows ANSI:** Auto-enable native ANSI support on Windows.
-- [ ] **Terminal Dimensions:** Methods to query terminal width and height dynamically.
-- [ ] **Raw Mode Toggle:** Ability to switch the terminal to raw mode for unbuffered, character-by-character input reading.
-- [ ] **NO_COLOR Standard:** Automatic respect for the `NO_COLOR` environment variable to disable styling dynamically.
+- [x] Core color manipulation (16 colors, 256 colors, TrueColor RGB).
+- [x] Text formatting traits (Bold, Italic, Blink, Dim, etc.).
+- [x] Absolute and relative cursor positioning.
+- [x] Screen manipulation and clearing.
+
+### 🔭 v0.2.0 — Planned
+
+- [x] **Windows ANSI:** Auto-enable native ANSI support on Windows.
+- [x] **Terminal Dimensions:** Methods to query terminal width and height dynamically.
+- [x] **Raw Mode Toggle:** Ability to switch the terminal to raw mode for unbuffered, character-by-character input reading.
+- [x] **NO_COLOR Standard:** Automatic respect for the `NO_COLOR` environment variable to disable styling dynamically.
 - [ ] **Async Key Events:** Foundational support for reading non-blocking keyboard and mouse events.
 
 

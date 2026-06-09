@@ -1,3 +1,5 @@
+//! Integration tests for `cirious_codex_term`
+
 use cirious_codex_term::{Color, Style, StyleExt};
 
 #[test]

@@ -39,18 +39,26 @@ impl Style {
   ///
   /// assert_eq!(Style::Bold.to_str(), "\x1b[1m");
   /// ```
-  pub fn to_str(&self) -> &'static str {
+  #[must_use]
+  pub const fn to_str(&self) -> &'static str {
     match self {
-      Style::Bold => "\x1b[1m",
-      Style::Dim => "\x1b[2m",
-      Style::Italic => "\x1b[3m",
-      Style::Underline => "\x1b[4m",
-      Style::Blink => "\x1b[5m",
-      Style::Reverse => "\x1b[7m",
-      Style::Hidden => "\x1b[8m",
-      Style::Strikethrough => "\x1b[9m",
-      Style::Reset => "\x1b[0m",
+      Self::Bold => "\x1b[1m",
+      Self::Dim => "\x1b[2m",
+      Self::Italic => "\x1b[3m",
+      Self::Underline => "\x1b[4m",
+      Self::Blink => "\x1b[5m",
+      Self::Reverse => "\x1b[7m",
+      Self::Hidden => "\x1b[8m",
+      Self::Strikethrough => "\x1b[9m",
+      Self::Reset => "\x1b[0m",
     }
+  }
+}
+
+impl std::fmt::Display for Style {
+  #[inline]
+  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    f.write_str(self.to_str())
   }
 }
 
