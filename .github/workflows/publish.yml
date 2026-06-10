@@ -1,9 +1,0 @@
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write # Required for Trusted Publishing
-    steps:
-      - uses: actions/checkout@v4
-      - name: Publish to crates.io
-        run: cargo publish
