@@ -22,16 +22,35 @@
 //! println!("You are {} years old.", age.green().underline());
 //! ```
 
+// Enables docs.rs features to show tags like "Only on Windows"
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
+// Ensures all public items are documented (Essential for crates.io)
+#![warn(missing_docs)]
+// Prevents accidental unsafe code in the entire crate
+#![deny(unsafe_code)]
 
-/// ANSI control structures
+/// ANSI control structures (Colors, Styles, Cursor, and Screen).
 pub mod control;
 
-/// Prompt utilities for terminal input and output.
+/// Terminal lifecycle and environment utilities.
 pub mod prompt;
 
-#[cfg(windows)]
-pub use prompt::enable_ansi_support;
+/// Asynchronous terminal event handling (Keyboard, Mouse).
+pub mod event;
+
+// -----------------------------------------------------------------------------
+// PUBLIC API EXPORTS
+// -----------------------------------------------------------------------------
+
+// Styling & Control
+pub use control::{Color, Cursor, Screen, Style, StyleExt, StyledText};
+
+// Events
+pub use event::{poll, read, Event, KeyCode, KeyEvent};
+
+// Terminal Lifecycle
 pub use prompt::{init_term, RawModeGuard, TerminalSize};
 
-pub use control::{Color, Cursor, Screen, Style, StyleExt, StyledText};
+// Windows-specific utilities
+#[cfg(windows)]
+pub use prompt::enable_ansi_support;

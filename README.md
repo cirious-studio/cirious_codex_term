@@ -22,7 +22,7 @@ Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-cirious_codex_term = "0.1"
+cirious_codex_term = "0.2"
 ```
 
 And then in your code:
@@ -68,14 +68,21 @@ fn main() {
 - [x] Absolute and relative cursor positioning.
 - [x] Screen manipulation and clearing.
 
-### 🔭 v0.2.0 — Planned
+### ✅ v0.2.0 — Completed
 
 - [x] **Windows ANSI:** Auto-enable native ANSI support on Windows.
 - [x] **Terminal Dimensions:** Methods to query terminal width and height dynamically.
 - [x] **Raw Mode Toggle:** Ability to switch the terminal to raw mode for unbuffered, character-by-character input reading.
 - [x] **NO_COLOR Standard:** Automatic respect for the `NO_COLOR` environment variable to disable styling dynamically.
-- [ ] **Async Key Events:** Foundational support for reading non-blocking keyboard and mouse events.
+- [x] **Async Key Events:** Foundational support for reading non-blocking keyboard and mouse events.
 
+### 🔭 v0.3.0 — Planned
+
+- [ ] **Mouse Tracking Support:** Implement SGR-style mouse reporting (click, drag, scroll).
+- [ ] **Modifier Support:** Track Ctrl, Alt, and Shift for complex shortcuts.
+- [ ] **Buffered Rendering:** Double buffering to prevent screen flickering.
+- [ ] **Event Loop Abstraction:** Helper traits to manage TUI lifecycles easily.
+- [ ] **Performance Optimization:** Batching ANSI sequences to reduce syscalls.
 
 ---
 
